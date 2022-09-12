@@ -12,6 +12,6 @@ import (
 func customizedRegister(r *server.Hertz) {
 	r.GET("/ping", handler.Ping)
 
-	r.StaticFS("/", &app.FS{Root: "/opt/node/ops-plus-web/dist", GenerateIndexPages: true, IndexNames: []string{"index.html"}})
+	r.StaticFS("/", &app.FS{Root: "./web-ui/dist", GenerateIndexPages: true, IndexNames: []string{"index.html"}})
 	// your code ...
 }
