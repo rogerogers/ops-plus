@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+package hello;
+
+option go_package = "auth";
+
+import "api.proto";
+
+message LoginReq {
+  string username = 1[(api.body) = "username"];
+  string password = 2[(api.body) = "password"];
+}
+
+message LoginReply {
+  string status = 1;
+  string type = 2;
+}
+
+message LogoutReq{
+  string name = 1 [(api.raw_body) = "name"];
+}
+
+message LogoutReply{
+  string RespBody = 1;
+}
+
+service AuthService {
+  rpc Login(LoginReq) returns(LoginReply) {
+    option (api.post) = "/api/login/account";
+  }
+  rpc Logout(LogoutReq) returns(LogoutReply) {
+    option (api.post) = "/api/login/logout";
+  }
+}

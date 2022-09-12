@@ -1,0 +1,11 @@
+syntax = "proto2";
+
+package base;
+
+option go_package = "/base";
+
+message BaseResp {
+  required string StatusCode = 1;
+  optional string Msg = 2;
+  extensions 10 to 50;
+}

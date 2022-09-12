@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package hello;
+
+option go_package = "user";
+
+import "api.proto";
+
+message CurrentUserReq {
+  string username = 1[(api.body) = "username"];
+  string password = 2[(api.body) = "password"];
+}
+
+message CurrentUserReply{
+  string name = 1;
+  string avatar = 2;
+  string userid=3;
+  string email =4;
+  string signature = 5;
+  string title = 6;
+  string group = 7;
+  map<string, string> tags = 8;
+  int32 notifyCount = 9;
+  int32 unreadCount = 10;
+  string country = 11;
+  string access = 12;
+  string address = 13;
+  string phone = 14;
+}
+
+service UserService {
+  rpc Current(CurrentUserReq) returns(CurrentUserReply) {
+    option (api.get) = "/api/user/current";
+  }
+}
