@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package repository;
+
+option go_package = "repository";
+
+import "api.proto";
+
+message RepoReq {
+  string platform = 1;
+}
+
+message RepoItem{
+  string id = 1;
+  string name = 2;
+  string desc = 3;
+  string url = 4;
+  string language = 5;
+}
+
+message RepoReply {
+  repeated RepoItem item = 1;
+}
+
+service RepoService{
+  rpc List(RepoReq) returns (RepoReply){
+    option (api.get) = "/api/repo/list";
+  };
+}

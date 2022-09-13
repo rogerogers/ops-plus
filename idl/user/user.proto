@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package hello;
+package user;
 
 option go_package = "user";
 
@@ -14,8 +14,8 @@ message CurrentUserReq {
 message CurrentUserReply{
   string name = 1;
   string avatar = 2;
-  string userid=3;
-  string email =4;
+  string userid = 3;
+  string email = 4;
   string signature = 5;
   string title = 6;
   string group = 7;
