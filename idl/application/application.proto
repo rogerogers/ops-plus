@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package application;
+
+option go_package = "application";
+
+import "api.proto";
+
+message ApplicationReq {
+  uint32 id = 1;
+  string name = 2;
+  uint32 page = 3;
+  uint32 page_size = 4;
+}
+
+message ApplicationItem {
+  uint32 id = 1;
+  string name = 2;
+  string description = 3;
+  string created_at = 4;
+}
+
+message ApplicationReply {
+  repeated ApplicationItem data = 1;
+}
+
+service ApplicationService {
+  rpc Get(ApplicationReq) returns (ApplicationReply){
+    option (api.get) = "/api/application";
+  }
+}
